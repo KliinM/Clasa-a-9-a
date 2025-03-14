@@ -3,13 +3,16 @@ using namespace std;
 int fibo (int x)
 {
     int _out = 0;
-    while(_out<=100)
+    int y=1;
+    int i=1;
+    while(i<=x)//schimba conditia si formula cu o variabila noua
     {
-        _out=_out+x;
-        x=_out-x;
-    cout<<_out<<"\n";
+        _out=_out+y;
+        y=_out-y;
+          i++;
 
     }
+    x=_out;
     return _out;
 }
 int main() {
