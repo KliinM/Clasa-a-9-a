@@ -22,22 +22,21 @@ int main() {
             if(i%2==1 )
             {
                 produsI*=cars[i];
-            }
+              }
+                    if(i%3==0)
+                      {
+                          poz=cars[i]-poz;
+                      }
                     //cout << cars[i] <<"\n";
   }
 
-for (int i = 0; i< lungime; i++)
-  {
-      if(i%3==0)
-      {
-          poz=cars[i]-poz;
-      }
 
 
 
 
 
-  }
+
+  
   cout << suma <<"\n";
   cout<<sumap<<"\n";
   cout<<produsI<<"\n";
