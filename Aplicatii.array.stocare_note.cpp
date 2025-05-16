@@ -68,6 +68,15 @@ int main() {
     }
 
     cout << setfill('-') << setw(25) << "-" << endl;
+    cout << "\nElevii cu note apropiate (+/-1):\n";
+    for (int i = 0; i < int_p; i++) {
+        for (int j = i + 1; j < int_p; j++) {
+            if ((int_copii_note[i] - 1 == int_copii_note[j]) || (int_copii_note[i] + 1 == int_copii_note[j])) {
+                cout << int_nume_copii[i] << " (" << int_copii_note[i] << ") - " << int_nume_copii[j] << " (" << int_copii_note[j] << ")\n";
+            }
+        }
+    }
 
     return 0;
 }
+
