@@ -40,8 +40,8 @@ int main() {
     for (int i = 0; i < int_p - 1; i++) {
         for (int j = 0; j < int_p - i - 1; j++) {
             if (int_nume_copii[j] > int_nume_copii[j + 1]) {
-                string temp_nume = int_nume_copii[j];
-                int temp_nota = int_copii_note[j];
+                string temp_nume = int_nume_copii[j];     //declaratia variabilei o faci in afara "for"-urilor
+                int temp_nota = int_copii_note[j];        //declaratia variabilei o faci in afara "for"-urilor
 
                 int_nume_copii[j] = int_nume_copii[j + 1];
                 int_copii_note[j] = int_copii_note[j + 1];
