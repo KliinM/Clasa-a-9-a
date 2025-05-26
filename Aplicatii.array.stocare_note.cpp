@@ -6,7 +6,8 @@ using namespace std;
 
 int main() {
     const int SIZE = 10;
-    int int_p, int_n = 0, int_min, int_max=0;
+    int int_p, int_n = 0, int_min, int_max=0,temp_nota,media_aproximativa;
+    string temp_nume;
     string int_nume_copii[SIZE] = {"Maria", "Aby", "Laurentiu", "Mihaela", "Petrica", "Elena", "Olivia", "Eva", "Calin", "Luca"};
     int int_copii_note[SIZE];
 
@@ -36,8 +37,8 @@ int main() {
     int parte_intreaga_media = int_n / int_p, rest_media = int_n % int_p;
 
     for (int i = 1; i < int_p; i++) {
-        string temp_nume = int_nume_copii[i];
-        int temp_nota = int_copii_note[i], j = i - 1;
+         temp_nume = int_nume_copii[i];
+        temp_nota = int_copii_note[i], j = i - 1;
 
         while (j >= 0 && int_nume_copii[j] > temp_nume) {
             int_nume_copii[j + 1] = int_nume_copii[j];
@@ -65,7 +66,7 @@ int main() {
     cout << setfill('-') << setw(25) << "-" << endl;
     cout << "Elevii care indeplinesc conditia |nota - media| < 1\n";
 
-    int media_aproximativa = parte_intreaga_media;
+    media_aproximativa = parte_intreaga_media;
     if (rest_media * 2 > int_p)
     {
         media_aproximativa++;
