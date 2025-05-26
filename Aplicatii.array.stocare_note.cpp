@@ -1,12 +1,12 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-
+#include <math.h>
 using namespace std;
 
 int main() {
     const int SIZE = 10;
-    int int_p, int_n = 0, int_min, int_max=0,temp_nota,media_aproximativa;
+    int int_p, int_n = 0, int_min, int_max=0,temp_nota,media_aproximativa,j;
     string temp_nume;
     string int_nume_copii[SIZE] = {"Maria", "Aby", "Laurentiu", "Mihaela", "Petrica", "Elena", "Olivia", "Eva", "Calin", "Luca"};
     int int_copii_note[SIZE];
@@ -23,6 +23,11 @@ int main() {
     for (int i = 0; i < int_p; i++) {
         cout << int_nume_copii[i] << " a luat nota: ";
         cin >> int_copii_note[i];
+        if(int_copii_note[i]>10)
+        {
+            cout<<"esti prost";
+            return 0;
+        }
         int_n += int_copii_note[i];
 
         if (int_copii_note[i] < int_min)
@@ -64,19 +69,21 @@ int main() {
     }
 
     cout << setfill('-') << setw(25) << "-" << endl;
+    media_aproximativa = parte_intreaga_media;
+     parte_intreaga_media = int_n / int_p, rest_media = int_n % int_p;
     cout << "Elevii care indeplinesc conditia |nota - media| < 1\n";
 
-    media_aproximativa = parte_intreaga_media;
-    if (rest_media * 2 > int_p)
-    {
-        media_aproximativa++;
-    }
+int media_extinsa = (int_n * 10) / int_p;
 
-    for (int i = 0; i < int_p; i++) {
-        if (int_copii_note[i] == parte_intreaga_media || int_copii_note[i] == parte_intreaga_media + 1) {
-            cout << int_nume_copii[i] << " - Nota: " << int_copii_note[i] << "\n";
-        }
+for (int i = 0; i < int_p; i++) {
+    int nota_extinsa = int_copii_note[i] * 10;
+    int diferenta = abs(nota_extinsa - media_extinsa);
+
+    if (diferenta < 10) {
+        cout << int_nume_copii[i] << " - Nota: " << int_copii_note[i] << "\n";
     }
+}
 
     return 0;
 }
+
