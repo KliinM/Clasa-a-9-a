@@ -1,82 +1,70 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <cmath>
 using namespace std;
 
 int main() {
     const int SIZE = 10;
-    int int_p, int_n = 0, int_min, int_max =0, j;
-    string temp_nume;
-    string int_nume_copii[SIZE] = {"Maria", "Aby", "Laurentiu", "Mihaela", "Petrica", "Elena", "Olivia", "Eva", "Calin", "Luca"};
-    int int_copii_note[SIZE];
+    int int_p, suma = 0, int_min = 11, int_max = 0,media_x10;
+    string nume[SIZE] = {"Maria", "Aby", "Laurentiu", "Mihaela", "Petrica", "Elena", "Olivia", "Eva", "Calin", "Luca"};
+    int note[SIZE];
 
     cout << "Introdu nr de copii de la 1 la 10: ";
     cin >> int_p;
-
     if (int_p < 1 || int_p > SIZE) {
-        cout << "Numar invalid. Program terminat.\n";
+        cout << "Esti prost\n";
         return 0;
     }
 
     for (int i = 0; i < int_p; i++) {
-        cout << int_nume_copii[i] << " a luat nota: ";
-        cin >> int_copii_note[i];
-
-        if (int_copii_note[i] < 1 || int_copii_note[i] > 10) {
-            cout << "Nota invalida. Program terminat.\n";
+        cout << nume[i] << " a luat nota: ";
+        cin >> note[i];
+        if (note[i] < 1 || note[i] > 10) {
+            cout << "Esti prost";
             return 0;
         }
-
-        int_n += int_copii_note[i];
-        if (int_copii_note[i] < int_min)
+        suma += note[i];
+        if (note[i] < int_min)
         {
-            int_min = int_copii_note[i];
+            int_min = note[i];
         }
-        if (int_copii_note[i] > int_max)
+        if (note[i] > int_max)
         {
-            int_max = int_copii_note[i];
+            int_max = note[i];
         }
     }
-
 
     for (int i = 1; i < int_p; i++) {
-        temp_nume = int_nume_copii[i];
-        int temp_nota = int_copii_note[i];
-        j = i - 1;
-        while (j >= 0 && int_nume_copii[j] > temp_nume) {
-            int_nume_copii[j + 1] = int_nume_copii[j];
-            int_copii_note[j + 1] = int_copii_note[j];
+        string temp_nume = nume[i];
+        int temp_nota = note[i];
+        int j = i - 1;
+        while (j >= 0 && nume[j] > temp_nume) {
+            nume[j + 1] = nume[j];
+            note[j + 1] = note[j];
             j--;
         }
-        int_nume_copii[j + 1] = temp_nume;
-        int_copii_note[j + 1] = temp_nota;
+        nume[j + 1] = temp_nume;
+        note[j + 1] = temp_nota;
     }
-
-    int parte_intreaga_media = int_n / int_p;
-    int rest_media = int_n % int_p;
 
     cout << "Cel mai mare numar: " << int_max << "\n";
     cout << "Cel mai mic numar: " << int_min << "\n";
-    cout << "Media aritmetica: " << parte_intreaga_media << "." << rest_media << "\n";
+    cout << "Media aritmetica: " << suma / int_p << "." << suma % int_p << "\n";
 
-    cout << "Elevii sortati alfabetic si notele lor:\n";
+    cout << "\nElevii sortati alfabetic si notele lor:\n";
     cout << setfill('-') << setw(25) << "-" << endl;
-    cout << setfill(' ') << setw(15) << left << "Elev" << setw(10) << "Nota" << endl;
+    cout << setw(15) << left << "Elev" << setw(10) << "Nota" << endl;
     cout << setfill('-') << setw(25) << "-" << endl;
-
     for (int i = 0; i < int_p; i++) {
-        cout << setfill(' ') << setw(15) << left << int_nume_copii[i] << setw(10) << int_copii_note[i] << endl;
+        cout << setfill(' ') << setw(15) << left << nume[i] << setw(10) << note[i] << endl;
     }
-
     cout << setfill('-') << setw(25) << "-" << endl;
 
     cout << "Elevii care indeplinesc conditia |nota - media| < 1:\n";
-    int media_extinsa = (int_n * 10) / int_p;
-
+     media_x10 = (suma * 10) / int_p;
     for (int i = 0; i < int_p; i++) {
-        if (abs(int_copii_note[i] * 10 - media_extinsa) < 10) {
-            cout << int_nume_copii[i] << " - Nota: " << int_copii_note[i] << "\n";
+        if ((note[i] * 10 - media_x10 > -10) && (note[i] * 10 - media_x10 < 10)) {
+            cout << nume[i] << " - Nota: " << note[i] << "\n";
         }
     }
 
